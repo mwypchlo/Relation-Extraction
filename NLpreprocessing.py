@@ -19,14 +19,19 @@ def remove_stopwords(text):
 
 def tagging_data(text):##explanations of tags in tags_explanation file
     for t in text:
-        words=remove_stopwords(text)
+        words=get_words(text)
         tagged= nltk.pos_tag(words)
     return tagged
 
+def entity_recognition(text):
+    namedEnt = nltk.ne_chunk(tagging_data(text))
+    return namedEnt
+
 ##test
-text = "Rick Grimes is a sheriff of King County"
+text = "Bill Gates is best known as the co-founder of Microsoft Corporation"
 
 print(get_sentences(text))
 print(get_words(text))
 print(remove_stopwords(text))
 print(tagging_data(text))
+print(entity_recognition(text))
