@@ -1,5 +1,6 @@
 import nltk
 from nltk.corpus import stopwords
+from nltk.tree import Tree
 
 def get_sentences(text):
     data = nltk.sent_tokenize(text)
@@ -27,11 +28,26 @@ def entity_recognition(text):
     namedEnt = nltk.ne_chunk(tagging_data(text))
     return namedEnt
 
-##test
-text = "Bill Gates is best known as the co-founder of Microsoft Corporation"
+def get_continuous_chunks(text):
+    chunked = nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(text)))
+    prev = None
+    continuous_chunk = []
+    current_chunk = []
 
-print(get_sentences(text))
-print(get_words(text))
-print(remove_stopwords(text))
-print(tagging_data(text))
-print(entity_recognition(text))
+    for i in chunked:
+        if type(i) == Tree:
+            current_chunk.append(" ".join([token for token, pos in i.leaves()]))
+        elif current_chunk:
+            named_entity = " ".join(current_chunk)
+            if named_entity not in continuous_chunk:
+                continuous_chunk.append(named_entity)
+                current_chunk = []
+        else:
+            continue
+
+    if continuous_chunk:
+        named_entity = " ".join(current_chunk)
+        if named_entity not in continuous_chunk:
+            continuous_chunk.append(named_entity)
+
+    return continuous_chunk
