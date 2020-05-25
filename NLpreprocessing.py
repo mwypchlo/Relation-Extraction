@@ -24,12 +24,8 @@ def tagging_data(text):##explanations of tags in tags_explanation file
         tagged= nltk.pos_tag(words)
     return tagged
 
-def entity_recognition(text):
-    namedEnt = nltk.ne_chunk(tagging_data(text))
-    return namedEnt
-
 def get_continuous_chunks(text):
-    chunked = nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(text)))
+    chunked = nltk.ne_chunk(tagging_data(text))
     prev = None
     continuous_chunk = []
     current_chunk = []

@@ -8,12 +8,12 @@ getinfo = GetDBPediaInfo.getTypes('Bill_Gates')
 
 if __name__ == '__main__':
     text=raw_input("Write the sentence: ")
-    preprocessing=NLpreprocessing.get_continuous_chunks(text)
-    print(preprocessing)
-    for p in preprocessing:
+    nl_data=NLpreprocessing.get_continuous_chunks(text)
+    print(nl_data)
+    for p in nl_data:
         s= p.replace(" ", "_")
         print(s)
         GetDBPediaInfo.printResult(GetDBPediaInfo.getTypes(s))
-        GetDBPediaInfo.printResult(GetDBPediaInfo.getTypes(s))
         processedInfo = GetDBPediaInfo.filterAnswear(GetDBPediaInfo.getTypes(s))
         GetDBPediaInfo.printResult(processedInfo)
+        print("------------------------------------------------------------------------------------")
