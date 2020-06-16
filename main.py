@@ -3,6 +3,7 @@ import re
 
 import GetDBPediaInfo
 import NLpreprocessing
+from knowledgeBase import giveTripleFromKnowledge
 
 # getinfo = GetDBPediaInfo.getTypes('Bill_Gates')
 
@@ -19,10 +20,29 @@ import NLpreprocessing
 #         print("------------------------------------------------------------------------------------")
 
 if __name__ == '__main__':
-    getinfo = GetDBPediaInfo.getTypes('Bill_Gates')
-    getinfo2 = GetDBPediaInfo.getTypes('Microsoft')
-    processedInfo1 = GetDBPediaInfo.filterAnswear(getinfo)
-    processedInfo2 = GetDBPediaInfo.filterAnswear(getinfo2)
-    GetDBPediaInfo.printResult(processedInfo1)
-    print("-------------------------------------------------")
-    GetDBPediaInfo.printResult(processedInfo2)
+    print('Bill Gates + Microsoft')
+    getinfo = GetDBPediaInfo.getItAllDone('Bill_Gates')
+    getinfo2 = GetDBPediaInfo.getItAllDone('Microsoft')
+    print(getinfo)
+    print(getinfo2)
+    print('------------------------------')
+
+    for word1 in getinfo:
+        for word2 in getinfo2:
+            giveTripleFromKnowledge(word1, word2)
+
+    print('\n\n===============================\n\n')
+
+    print('Keanu_Reeves + Texas')
+    getinfo = GetDBPediaInfo.getItAllDone('Keanu_Reeves')
+    getinfo2 = GetDBPediaInfo.getItAllDone('Texas')
+    print(getinfo)
+    print(getinfo2)
+    print('------------------------------')
+
+    for word1 in getinfo:
+        for word2 in getinfo2:
+            giveTripleFromKnowledge(word1, word2)
+
+
+
