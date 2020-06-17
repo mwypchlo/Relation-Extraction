@@ -4,6 +4,8 @@ import re
 import GetDBPediaInfo
 import NLpreprocessing
 from knowledgeBase import giveTripleFromKnowledge
+from parse import parse
+
 
 # getinfo = GetDBPediaInfo.getTypes('Bill_Gates')
 
@@ -19,7 +21,8 @@ from knowledgeBase import giveTripleFromKnowledge
 #         GetDBPediaInfo.printResult(processedInfo)
 #         print("------------------------------------------------------------------------------------")
 
-if __name__ == '__main__':
+
+def example1():
     print('Bill Gates + Microsoft')
     getinfo = GetDBPediaInfo.getItAllDone('Bill_Gates')
     getinfo2 = GetDBPediaInfo.getItAllDone('Microsoft')
@@ -45,4 +48,12 @@ if __name__ == '__main__':
             giveTripleFromKnowledge(word1, word2)
 
 
+def example2(filename):
+    parsed = parse(filename)
+    print('Parsed sentences: ', parsed[0])
+    print('Parsed objects: ', parsed[1])
+    print('Objects + types: ', parsed[2])
 
+
+if __name__ == '__main__':
+    example2('file_100.ttl')

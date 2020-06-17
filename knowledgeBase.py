@@ -54,7 +54,7 @@ def isInKnowledge(word):
 
 def giveTripleFromKnowledge(word1, word2):
     for triple in knowledge:
-        if (word1 == triple[0] and word2 == triple[1]):
+        if word1 == triple[0] and word2 == triple[1]:
             print(triple)
         else:
             if (word1 == triple[1] and word2 == triple[0]):

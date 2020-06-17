@@ -1,3 +1,5 @@
+# Probably useless. Stays here nevertheless, cause I've wasted too much time on this crap
+
 from SPARQLWrapper import SPARQLWrapper, JSON
 from knowledgeBase import isInKnowledge
 
