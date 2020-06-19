@@ -61,5 +61,11 @@ def giveTripleFromKnowledge(word1, word2):
                 print(triple)
 
 
+def giveTripleFromKnowledgeNoDoubleCheck(word1, word2):
+    for triple in knowledge:
+        if word1 == triple[0] and word2 == triple[1]:
+            print(triple)
+
+
 if __name__ == '__main__':
     giveTripleFromKnowledge('Place', 'Person')
