@@ -4,7 +4,7 @@ import re
 import GetDBPediaInfo
 import NLpreprocessing
 from knowledgeBase import giveTripleFromKnowledge, giveTripleFromKnowledgeNoDoubleCheck
-from parse import parse, parseSentence
+from parse import parse
 
 
 # getinfo = GetDBPediaInfo.getTypes('Bill_Gates')
