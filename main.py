@@ -4,7 +4,7 @@ import re
 import GetDBPediaInfo
 import NLpreprocessing
 from knowledgeBase import giveTripleFromKnowledge, giveTripleFromKnowledgeNoDoubleCheck
-from parse import parse
+from parse import parse, parse_odp
 
 
 # getinfo = GetDBPediaInfo.getTypes('Bill_Gates')
@@ -73,6 +73,7 @@ def example2(filename):
 
 def example3(filename):
     parsed = parse(filename)
+    parsed_all=parse_odp(filename)
     print('Parsed sentences: ', parsed[0])
     print('Parsed objects: ', parsed[1])
     print('Objects + types: ', parsed[2])
@@ -94,6 +95,8 @@ def example3(filename):
             # print('-------------------\n', word1, word2, sep=' <-> ')
             giveTripleFromKnowledge(word1, word2)
 
+    print(parsed_all)
+
 def getObjectsFromSentence(text):
     data2=[]
     nl_data = NLpreprocessing.get_continuous_chunks(text)
@@ -105,7 +108,7 @@ def getObjectsFromSentence(text):
 def getInfoFromSentence(text):
     data1=getObjectsFromSentence(text)
     print('Sentence: ', text)
-    print('Parsed objects: ', data1)
+    print('Objects: ', data1)
 
     print(data1)
 
@@ -125,11 +128,11 @@ if __name__ == '__main__':
     #example1()                # Getting data from DBpedia
     #example2('file_100.ttl')  # Working parser
     #example3('file_100.ttl')    # Parser + DBpedia
-    text = raw_input("Type 1 to read data from file or type 2 to write your own sentence: ")
-    if text=='1':
-        text2=raw_input("Provide file name(path): ")
-        example3(text2)
-    if text=='2':
-        text2 = raw_input("Write your own sentence: ")
-        getInfoFromSentence(text2)
+        text = raw_input("Type 1 to read data from file or type 2 to write your own sentence: ")
+        if text=='1':
+            text2=raw_input("Provide file name(path): ")
+            example3(text2)
+        if text=='2':
+            text2 = raw_input("Write your own sentence: ")
+            getInfoFromSentence(text2)
 

@@ -58,7 +58,8 @@ def giveTripleFromKnowledge(word1, word2):
             print(triple)
         else:
             if (word1 == triple[1] and word2 == triple[0]):
-                print(triple)
+                print(triple[0])
+
 
 
 def giveTripleFromKnowledgeNoDoubleCheck(word1, word2):
