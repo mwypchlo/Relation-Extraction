@@ -4,7 +4,7 @@ import re
 import GetDBPediaInfo
 import NLpreprocessing
 from knowledgeBase import giveTripleFromKnowledge, giveTripleFromKnowledgeNoDoubleCheck
-from parse import parse, parse_odp
+from parse import parse#, parse_odp
 
 
 # getinfo = GetDBPediaInfo.getTypes('Bill_Gates')
@@ -73,29 +73,15 @@ def example2(filename):
 
 def example3(filename):
     parsed = parse(filename)
-    parsed_all=parse_odp(filename)
     print('Parsed sentences: ', parsed[0])
     print('Parsed objects: ', parsed[1])
-    print('Objects + types: ', parsed[2])
-    print('\n')
-    # print(parsed[3])
 
-    print(parsed[4])
 
-    data = []
-    for objs in parsed[4]:
-        temp = GetDBPediaInfo.getItAllDone(objs)
-        print(temp)
-        data.append(temp)
+    # for word1 in data[0]:
+    #     for word2 in data[1]:
+    #         # print('-------------------\n', word1, word2, sep=' <-> ')
+    #         giveTripleFromKnowledge(word1, word2)
 
-    print('\n')
-
-    for word1 in data[0]:
-        for word2 in data[1]:
-            # print('-------------------\n', word1, word2, sep=' <-> ')
-            giveTripleFromKnowledge(word1, word2)
-
-    print(parsed_all)
 
 def getObjectsFromSentence(text):
     data2=[]
@@ -127,12 +113,12 @@ def getInfoFromSentence(text):
 if __name__ == '__main__':
     #example1()                # Getting data from DBpedia
     #example2('file_100.ttl')  # Working parser
-    #example3('file_100.ttl')    # Parser + DBpedia
-        text = raw_input("Type 1 to read data from file or type 2 to write your own sentence: ")
-        if text=='1':
-            text2=raw_input("Provide file name(path): ")
-            example3(text2)
-        if text=='2':
-            text2 = raw_input("Write your own sentence: ")
-            getInfoFromSentence(text2)
+    example3('file_17.ttl')    # Parser + DBpedia
+        # text = raw_input("Type 1 to read data from file or type 2 to write your own sentence: ")
+        # if text=='1':
+        #     text2=raw_input("Provide file name(path): ")
+        #     example3(text2)
+        # if text=='2':
+        #     text2 = raw_input("Write your own sentence: ")
+        #     getInfoFromSentence(text2)
 

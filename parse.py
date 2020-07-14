@@ -1,8 +1,10 @@
 import re
 import string
-
+from pathlib import Path
+import GetDBPediaInfo
 
 def parse(file):
+    # file = Path("Training Data/" + file)
     with open(file, 'r') as file:
         data = file.read().split('\n\n')
         is_string_re = 'nif:isString.*\"(.*)\"'
@@ -36,4 +38,12 @@ def parse(file):
             if tmp:
                 dbpediaNames.append(tmp.group(1)[:-1])
 
-    return sentences, meta, entityPlusRelation, all_obj, dbpediaNames
+    allInfo = {}
+    for key, value, dbpediaName in zip(entityPlusRelation.keys(), entityPlusRelation.values(), dbpediaNames):
+        temp = GetDBPediaInfo.getItAllDone(dbpediaName)
+        if value not in temp:
+            temp.append(value)
+        allInfo[key] = temp
+
+    # not returning meta, all_obj, dbpediaNames, entityPlusRelation - useless in main
+    return sentences, allInfo

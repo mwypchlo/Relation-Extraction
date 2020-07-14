@@ -1,4 +1,4 @@
-# Probably useless. Stays here nevertheless, cause I've wasted too much time on this crap
+# Actually usefull
 
 from SPARQLWrapper import SPARQLWrapper, JSON
 from knowledgeBase import isInKnowledge
@@ -35,23 +35,7 @@ def getTypes(object):
     querry += """> rdf:type ?type 
     FILTER ( strstarts(str(?type), "http://dbpedia.org/ontology/" ) ) }"""
 
-    sparql.setQuery(querry)
-    sparql.setReturnFormat(JSON)
-    results = sparql.query().convert()
-    return results
-
-def getTypes2(object):
-    sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-    querry = """
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-    PREFIX dbo: <http://dbpedia.org/ontology/>
-
-    SELECT ?type 
-    WHERE { <http://dbpedia.org/resource/"""
-    querry += object
-    querry += """> rdf:type ?type 
-    FILTER ( strstarts(str(?type), "http://dbpedia.org/ontology/" ) ) }"""
-
+    # print(querry)
     sparql.setQuery(querry)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
@@ -60,7 +44,7 @@ def getTypes2(object):
 
 def filterUsefullTypes(listOfTypes):
     for type in listOfTypes:
-        if(not isInKnowledge(type)):
+        if (not isInKnowledge(type)):
             listOfTypes.remove(type)
 
 
