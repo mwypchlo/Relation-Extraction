@@ -55,17 +55,16 @@ def isInKnowledge(word):
 def giveTripleFromKnowledge(word1, word2):
     for triple in knowledge:
         if word1 == triple[0] and word2 == triple[1]:
-            print(triple)
+            return triple
         else:
             if (word1 == triple[1] and word2 == triple[0]):
-                print(triple[0])
-
+                return triple
 
 
 def giveTripleFromKnowledgeNoDoubleCheck(word1, word2):
     for triple in knowledge:
         if word1 == triple[0] and word2 == triple[1]:
-            print(triple)
+            return triple
 
 
 if __name__ == '__main__':
