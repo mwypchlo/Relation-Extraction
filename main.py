@@ -4,7 +4,7 @@ import re
 import GetDBPediaInfo
 import NLpreprocessing
 from knowledgeBase import giveTripleFromKnowledge, giveTripleFromKnowledgeNoDoubleCheck
-from parse import parse#, parse_odp
+from parse import parse, answer_print
 
 
 def example3(filename):
@@ -69,7 +69,8 @@ def getInfoFromSentence(text):
 
 if __name__ == '__main__':
 
-    example3('file_4.ttl')    # Parser + DBpedia
+    example3('file_2.ttl')    # Parser + DBpedia
+    answer_print('file_2.ttl') # answer
     # text = raw_input("Type 1 to read data from file or type 2 to write your own sentence: ")
     # if text=='1':
     #     text2=raw_input("Provide file name(path): ")
