@@ -66,19 +66,34 @@ def getInfoFromSentence(text):
         for word2 in data[1]:
             giveTripleFromKnowledge(word1, word2)
 
+def main_script():
+    # example3('file_2.ttl')    # Parser + DBpedia
+    # answer_print('file_2.ttl') # answer
+    text = raw_input("Type 1 to read data from file or type 2 to write your own sentence: ")
+    if text in('1','2'):
+        if text == '1':
+            text2 = raw_input("Provide file name(path): ")
+            example3(text2)
+            answer_print(text2)
+        if text == '2':
+            text2 = raw_input("Write your own sentence: ")
+            getInfoFromSentence(text2)
+    else:
+        print('Invalid input')
 
 if __name__ == '__main__':
-
-    #example3('file_2.ttl')    # Parser + DBpedia
-    #answer_print('file_2.ttl') # answer
-     text = raw_input("Type 1 to read data from file or type 2 to write your own sentence: ")
-     if text=='1':
-         text2=raw_input("Provide file name(path): ")
-         example3(text2)
-         answer_print(text2)
-     if text=='2':
-         text2 = raw_input("Write your own sentence: ")
-         getInfoFromSentence(text2)
+    while True:
+        main_script()
+        while True:
+            answer = raw_input('Run again? (y/n): ')
+            if answer in ('y', 'n'):
+                break
+            print
+            'Invalid input.'
+        if answer == 'y':
+            continue
+        else:
+            break
 
 
 
