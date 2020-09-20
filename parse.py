@@ -89,14 +89,21 @@ def parse_answer(file):
 
         return results
 
-def answer_print(file): #wypisz pierwsza relacje
+def answer_print(file):
     a = parse_answer(file)
-    print('------------------------')
-    print('rdf:object')
-    print(a[0][0])
-    print('------------------------')
-    print('rdf:predicate')
-    print(a[0][1])
-    print('------------------------')
-    print('rdf:subject')
-    print(a[0][2])
+    print()
+    print('Triples found:')
+    for j in a:
+            print('*********')
+            print([a.index(j)],' triple')
+            print('---------')
+            print('[rdf:object]')
+            print('dbr:',a[a.index(j)][0])
+            print('---------')
+            print('[rdf:predicate]')
+            print('dbo:',a[a.index(j)][1])
+            print('---------')
+            print('[rdf:subject]')
+            print('dbr:',a[a.index(j)][2])
+            print('---------')
+            print()

@@ -69,13 +69,16 @@ def getInfoFromSentence(text):
 
 if __name__ == '__main__':
 
-    example3('file_2.ttl')    # Parser + DBpedia
-    answer_print('file_2.ttl') # answer
-    # text = raw_input("Type 1 to read data from file or type 2 to write your own sentence: ")
-    # if text=='1':
-    #     text2=raw_input("Provide file name(path): ")
-    #     example3(text2)
-    # if text=='2':
-    #     text2 = raw_input("Write your own sentence: ")
-    #     getInfoFromSentence(text2)
+    #example3('file_2.ttl')    # Parser + DBpedia
+    #answer_print('file_2.ttl') # answer
+     text = raw_input("Type 1 to read data from file or type 2 to write your own sentence: ")
+     if text=='1':
+         text2=raw_input("Provide file name(path): ")
+         example3(text2)
+         answer_print(text2)
+     if text=='2':
+         text2 = raw_input("Write your own sentence: ")
+         getInfoFromSentence(text2)
+
+
 
