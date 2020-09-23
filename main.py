@@ -75,7 +75,7 @@ def main_script():
                         continue
                     if text3=='2':
                         textparsed=parse(text2)
-                        print(getInfoFromSentence(list(textparsed[0])[0])[0])
+                        print(getObjectsFromSentence(list(textparsed[0])[0]))
                         continue
                     if text3 =='3':
                         example3(text2)

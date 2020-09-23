@@ -35,7 +35,6 @@ def getTypes(object):
     querry += """> rdf:type ?type 
     FILTER ( strstarts(str(?type), "http://dbpedia.org/ontology/" ) ) }"""
 
-    # print(querry)
     sparql.setQuery(querry)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
