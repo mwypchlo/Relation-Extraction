@@ -86,6 +86,7 @@ def main_script():
         if text == '2':
             text2 = raw_input("Write your own sentence: ")
             getInfoFromSentence(text2)
+
     else:
         print('Invalid input')
 
