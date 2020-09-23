@@ -9,7 +9,7 @@ from parse import parse, answer_print
 
 def example3(filename):
     parsed= parse(filename)
-    print('Parsed sentences: ', parsed[0].keys())
+    print('Parsed sentences: ', list(parsed[0])[0])
     print('Parsed objects: ', parsed[1])
     print()
     findRelations(parsed[1])
@@ -36,8 +36,6 @@ def findRelations(dictOfEntities):
                         print(result)
         firstElement = firstElement + 1
 
-
-
 def getObjectsFromSentence(text):
     data2=[]
     nl_data = NLpreprocessing.get_continuous_chunks(text)
@@ -52,8 +50,6 @@ def getInfoFromSentence(text):
     print('Sentence: ', text)
     print('Objects: ', data1)
 
-    print(data1)
-
     data = []
     for objs in data1:
         temp = GetDBPediaInfo.getItAllDone(objs)
@@ -67,23 +63,26 @@ def getInfoFromSentence(text):
             giveTripleFromKnowledge(word1, word2)
 
 def main_script():
-    # example3('file_2.ttl')    # Parser + DBpedia
-    # answer_print('file_2.ttl') # answer
     text = raw_input("Type '1' to read data from file or type '2' to write your own sentence: ")
     if text in('1','2'):
         if text == '1':
             text2 = raw_input("Provide file name(path): ")
-            text3 = raw_input("Type '1' to display expected triples or type '2' to display the result of relation extraction: ")
-            if text3 in('1','2'):
-                if text3 == '1':
-                    answer_print(text2)
-                    result = raw_input('Do you want to display result of relation extraction? (y/n): ')
-                    if result == 'y':
+            while True:
+                text3 = raw_input("Type '1' to display expected triples, type '2' to display found objects, type '3' to display the result of relation extraction or '4' to exit: ")
+                if text3 in('1','2', '3','4'):
+                    if text3 == '1':
+                        answer_print(text2)
+                        continue
+                    if text3=='2':
+                        textparsed=parse(text2)
+                        print(getInfoFromSentence(list(textparsed[0])[0])[0])
+                        continue
+                    if text3 =='3':
                         example3(text2)
-                    else:
+                        continue
+                    if text3 =='4':
+                        break
                         exit()
-                if text3 =='2':
-                    example3(text2)
         if text == '2':
             text2 = raw_input("Write your own sentence: ")
             getInfoFromSentence(text2)
