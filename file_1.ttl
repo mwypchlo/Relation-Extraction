@@ -53,7 +53,7 @@
 [ a              oa:Annotation , rdf:Statement ;
   rdf:object     dbr:Google ;
   rdf:predicate  dbo:employer ;
-  rdf:subject    aksw:James_Damore ;
+  rdf:subject    dbr:James_Damore ;
   oa:hasTarget   [ a             oa:SpecificResource ;
                    oa:hasSource  <http://www.india.com/travel/agra/#char=0,80>
                  ]
