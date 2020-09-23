@@ -8,7 +8,7 @@ from parse import parse, answer_print
 
 
 def example3(filename):
-    parsed = parse(filename)
+    parsed= parse(filename)
     print('Parsed sentences: ', parsed[0].keys())
     print('Parsed objects: ', parsed[1])
     print()
@@ -69,12 +69,21 @@ def getInfoFromSentence(text):
 def main_script():
     # example3('file_2.ttl')    # Parser + DBpedia
     # answer_print('file_2.ttl') # answer
-    text = raw_input("Type 1 to read data from file or type 2 to write your own sentence: ")
+    text = raw_input("Type '1' to read data from file or type '2' to write your own sentence: ")
     if text in('1','2'):
         if text == '1':
             text2 = raw_input("Provide file name(path): ")
-            example3(text2)
-            answer_print(text2)
+            text3 = raw_input("Type '1' to display expected triples or type '2' to display the result of relation extraction: ")
+            if text3 in('1','2'):
+                if text3 == '1':
+                    answer_print(text2)
+                    result = raw_input('Do you want to display result of relation extraction? (y/n): ')
+                    if result == 'y':
+                        example3(text2)
+                    else:
+                        exit()
+                if text3 =='2':
+                    example3(text2)
         if text == '2':
             text2 = raw_input("Write your own sentence: ")
             getInfoFromSentence(text2)
@@ -85,7 +94,7 @@ if __name__ == '__main__':
     while True:
         main_script()
         while True:
-            answer = raw_input('Run again? (y/n): ')
+            answer = raw_input('Run the program again? (y/n): ')
             if answer in ('y', 'n'):
                 break
             print

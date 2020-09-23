@@ -72,18 +72,18 @@ def parse_answer(file):
         for item in data:
             if item[:3] == '[ a' and item[-3:] == '] .':
                 x3 = []
-                for fi in item.split('\n')[1:4]:
-                    aa = fi.split(':')[2]
+                for i in item.split('\n')[1:4]:
+                    a = i.split(':')[2]
 
-                    if aa[:2] == '//' and aa[-3:] == '> ;':
-                        aa = aa.split('/')[-1].split('(')[0]
+                    if a[:2] == '//' and a[-3:] == '> ;':
+                        a = a.split('/')[-1].split('(')[0]
                     else:
-                        aa = aa[:-2]
+                        a = a[:-2]
 
-                    aa = aa.replace('_', '').replace('%2C', '').lower()
-                    aa = aa.translate(str.maketrans('', '', string.punctuation))
-                    aa = aa.strip()
-                    x3.append(aa)
+                    a = a.replace('_', '').replace('%2C', '').lower()
+                    a = a.translate(str.maketrans('', '', string.punctuation))
+                    a = a.strip()
+                    x3.append(a)
 
                 results.append(tuple(x3))
 
@@ -92,18 +92,15 @@ def parse_answer(file):
 def answer_print(file):
     a = parse_answer(file)
     print()
-    print('Triples found:')
+    print('Triples expected:')
     for j in a:
             print('*********')
             print([a.index(j)],' triple')
             print('---------')
-            print('[rdf:object]')
-            print('dbr:',a[a.index(j)][0])
+            print('[rdf:object]','dbr:',a[a.index(j)][0])
             print('---------')
-            print('[rdf:predicate]')
-            print('dbo:',a[a.index(j)][1])
+            print('[rdf:predicate]', 'dbo:',a[a.index(j)][1])
             print('---------')
-            print('[rdf:subject]')
-            print('dbr:',a[a.index(j)][2])
+            print('[rdf:subject]', 'dbr:',a[a.index(j)][2])
             print('---------')
             print()
