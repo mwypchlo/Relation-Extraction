@@ -57,12 +57,14 @@ def parse(file):
                 temp.append(value)
             allInfo[key] = temp
 
-    # print('\nentityPlusRelation: ', entityPlusRelation)
-    # print('\ndbpediaNames: ',dbpediaNames)
-    # print('\nall_info: ',allInfo)
+    for key, value in entityPlusRelation.items():
+        if key not in allInfo.keys():
+            temp = []
+            temp.append(value)
+            allInfo[key] = temp
 
-    # not returning meta, all_obj, dbpediaNames, entityPlusRelation - useless in main
     return sentences, allInfo
+
 
 def parse_answer(file):
     with open(file, 'r') as file:
@@ -89,6 +91,7 @@ def parse_answer(file):
 
         return results
 
+
 def answer_print(file):
     a = parse_answer(file)
     print()
@@ -104,3 +107,4 @@ def answer_print(file):
             print('[rdf:subject]', 'dbr:',a[a.index(j)][2])
             print('---------')
             print()
+

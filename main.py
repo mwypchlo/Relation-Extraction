@@ -3,15 +3,15 @@ import re
 
 import GetDBPediaInfo
 import NLpreprocessing
-from knowledgeBase import giveTripleFromKnowledge, giveTripleFromKnowledgeNoDoubleCheck
+from knowledgeBase import giveTripleFromKnowledge
 from parse import parse, answer_print
 
 
-def example3(filename):
-    parsed= parse(filename)
-    print('Parsed sentences: ', list(parsed[0])[0])
-    print('Parsed objects: ', parsed[1])
-    print()
+def seekRelations(filename):
+    parsed = parse(filename)
+    # print('Parsed sentences: ', list(parsed[0])[0])
+    # print('Parsed objects: ', parsed[1])
+    # print()
     findRelations(parsed[1])
 
 
@@ -74,21 +74,29 @@ def main_script():
                         answer_print(text2)
                         continue
                     if text3=='2':
-                        textparsed=parse(text2)
-                        print(getObjectsFromSentence(list(textparsed[0])[0]))
+                        textparsed = parse(text2)
+                        for key in textparsed[0].keys():
+                            print('Parseed sentence: ', key)
+                        print('\nParsed objects: ')
+                        for key, value in textparsed[1].items():
+                            buffer = ''
+                            for vals in value:
+                                buffer = buffer + str(vals) + ', '
+                            buffer = buffer[0:-2]
+                            print(key, ': ', buffer)
                         continue
                     if text3 =='3':
-                        example3(text2)
+                        seekRelations(text2)
                         continue
                     if text3 =='4':
-                        break
                         exit()
+                        break
         if text == '2':
             text2 = raw_input("Write your own sentence: ")
             getInfoFromSentence(text2)
-
     else:
         print('Invalid input')
+
 
 if __name__ == '__main__':
     while True:
@@ -97,12 +105,8 @@ if __name__ == '__main__':
             answer = raw_input('Run the program again? (y/n): ')
             if answer in ('y', 'n'):
                 break
-            print
-            'Invalid input.'
+            print('Invalid input.')
         if answer == 'y':
             continue
         else:
             break
-
-
-
