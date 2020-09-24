@@ -3,6 +3,7 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 from knowledgeBase import isInKnowledge
 
+
 def printResult(results):
     for result in results["results"]["bindings"]:
         print(result["type"]["value"])
@@ -35,7 +36,6 @@ def getTypes(object):
     querry += """> rdf:type ?type 
     FILTER ( strstarts(str(?type), "http://dbpedia.org/ontology/" ) ) }"""
 
-    # print(querry)
     sparql.setQuery(querry)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
@@ -54,18 +54,3 @@ def getItAllDone(object):
     result = resultToList(result)
     filterUsefullTypes(result)
     return result
-
-
-if __name__ == '__main__':
-    # results = getTypes('Microsoft')
-    # for result in results["results"]["bindings"]:
-    #     print(result["type"]["value"])
-    #
-    # print('\n\n')
-    #
-    # resultFiltered = filterAnswear(results)
-    # for result in resultFiltered["results"]["bindings"]:
-    #     print(result["type"]["value"])
-    res = getItAllDone('Microsoft')
-    print(res)
-    # printResult(res)

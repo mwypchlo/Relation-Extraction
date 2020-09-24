@@ -15,7 +15,7 @@ knowledge = [ # [DOMAIN, RANGE, PROPERTY]
     ['Place', 'PopulatedPlace', 'district'],
     ['Scientist', 'Person', 'doctoralAdvisor'],
     ['Scientist', 'Person', 'doctoralStudent'],
-    ['Person', 'Organization', 'employer'],
+    ['Person', 'Organisation', 'employer'],
     ['Band', 'Person', 'formerBandMember'],
     ['Athlete', 'SportsTeam', 'formerTeam'],
     ['Organization', 'City', 'foundationPlace'],
@@ -61,13 +61,3 @@ def giveTripleFromKnowledge(word1, word2):
             if (word1 == triple[1] and word2 == triple[0]):
                 result = result + str(triple)
     return result
-
-
-def giveTripleFromKnowledgeNoDoubleCheck(word1, word2):
-    for triple in knowledge:
-        if word1 == triple[0] and word2 == triple[1]:
-            return triple
-
-
-if __name__ == '__main__':
-    giveTripleFromKnowledge('Place', 'Person')
