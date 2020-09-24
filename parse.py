@@ -65,7 +65,6 @@ def parse(file):
 
     return sentences, allInfo
 
-
 def parse_answer(file):
     with open(file, 'r') as file:
         data = file.read().split('\n\n')

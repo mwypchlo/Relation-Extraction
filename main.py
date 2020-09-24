@@ -76,7 +76,7 @@ def main_script():
                     if text3=='2':
                         textparsed = parse(text2)
                         for key in textparsed[0].keys():
-                            print('Parseed sentence: ', key)
+                            print('Parsed sentence: ', key)
                         print('\nParsed objects: ')
                         for key, value in textparsed[1].items():
                             buffer = ''
@@ -94,6 +94,15 @@ def main_script():
         if text == '2':
             text2 = raw_input("Write your own sentence: ")
             getInfoFromSentence(text2)
+            obj=NLpreprocessing.get_continuous_chunks(text2)
+            data2 = []
+            for p in obj:
+                s = p.replace(" ", "_")
+                data2.append(s)
+            data3={}
+            for r in data2:
+                data3[r]=r
+            findRelations(data3)
     else:
         print('Invalid input')
 
