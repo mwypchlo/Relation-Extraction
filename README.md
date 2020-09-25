@@ -15,6 +15,7 @@ Rafał Adamski:
 
 Michał Wypchło:
 - Praca nad parserem odczytującym sentencje(wersja 1 z biblioteką nltk)
+- Opracowanie parsera, który odczytuje oczekiwane wyniki
 - Prace nad narzędziem określającym typ bytu S/V/O
 - Menu aplikacji i praca nad skryptem głównym
 
@@ -22,11 +23,11 @@ Michał Wypchło:
 ## Omówienie modułów aplikacji
 `GetDBPediaInfo.py` - klasa zawierająca zapytanie SPARQL, które pobiera dodatkowe informacje z DBPedii, gdy URI jest podane w pliku .ttl,
 
-`parse.py` - skrypt odczytujący dane z pików z przykładami. Jego działanie opiera się na wyszukaniu odpowiednich wyrażeń naturalnych,
+`parse.py` - skrypt odczytujący dane z plików z przykładami oraz odczytujący oczekiwane wyniki. Jego działanie opiera się na wyszukaniu odpowiednich wyrażeń naturalnych,
 
 `knowledgeBase.py` - baza z zapisanymi relacjami jakie mogą łączyć poszczególne byty, w zależności od ich predykatów,
 
-`NLpreprocessing.py` - klasa zajmująca się przetwarzaniem języka naturalnego,
+`NLpreprocessing.py` -  klasa zajmująca się przetwarzaniem języka naturalnego, określa obiekty ze zdania.
 
 `main.py` - główny plik programu łączący wszystkie moduły. Odpowiada za znalezienie relacji między poszczególnymi obiektami.
 
@@ -39,7 +40,10 @@ Aplikacja umożliwia odczytanie danych bezpośrednio z pliku *.ttl(opcja 1) lub 
 Wybór pierwszej opcji wymusza na użytkowniku wskazanie ścieżki do pliku, z którego dane mają zostać odczytane.
 Wybór drugiej opcji umożliwi wprowadzenie własnej sentencji. 
 
-W pierwszym wariancie, po wprowadzeniu nazwy/ścieżki odpowiedniego pliku aplikacja rozpoczyna pracę udostępniając kolejne 4 możliwości.  
+I. Opcja 1
+Wybór pierwszej opcji wymusza na użytkowniku wskazanie ścieżki do pliku, z którego dane mają zostać odczytane:
+
+Po wprowadzeniu nazwy/ścieżki odpowiedniego pliku aplikacja rozpoczyna pracę udostępniając kolejne 4 możliwości.  
 Opcja ‘1’ wyświetla oczekiwane trójki, odczytywane bezpośrednio z pliku *.ttl(plik jest rozkładany na części pierwsze za pomocą funkcji parse_answer w pliku parse.py).  
 Opcja ‘2’ umożliwia wyświetlenie odnalezionych w pliku *.ttl bytów(za pomocą funkcji getObjectsFromSentence z pliku main.py)  
 Opcja ‘3’ umożliwia wyświetlenie relacji między bytami, a cały proces skłąda się z następujących operacji.
@@ -61,4 +65,9 @@ Ostatnim krokiem działania programu jest znalezienie relacji, mogących łączy
 
 Ostatnia opcja dostępna pod numerem ‘4’ kończy działanie programu.
 
+II. Opcja 2
+
+Wybór drugiej opcji umożliwi wprowadzenie własnej sentencji:
+
+Po jej wprowadzeniu program określa istniejące w niej byty, a także ich typy.
 

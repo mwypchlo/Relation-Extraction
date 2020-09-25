@@ -63,7 +63,7 @@ def getInfoFromSentence(text):
             giveTripleFromKnowledge(word1, word2)
 
 def main_script():
-    text = raw_input("Type '1' to read data from file or type '2' to write your own sentence: ")
+    text = raw_input("Type '1' to read data from file(for relation extraction) or type '2' to write your own sentence(to get objects and their type): ")
     if text in('1','2'):
         if text == '1':
             text2 = raw_input("Provide file name(path): ")
